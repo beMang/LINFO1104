@@ -260,9 +260,7 @@ class Collection
     meth union(C2)
         if {C2 isEmpty($)}==false then
             {self put({C2 get($)})}
-            if {C2 isEmpty($)}==false then
-                {self union(C2)}
-            end
+            {self union(C2)}
         end
     end
 
