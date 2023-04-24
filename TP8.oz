@@ -147,3 +147,60 @@ local InS in
     {Browse {Counter InS}}
     InS=a|b|a|c|_
 end
+
+%---------------------------------------------------------------------------
+%---------------------------------------------------------------------------
+
+%-----------------PORTE_LOGIQUE---------------------------------------------
+declare
+fun {Not N}
+    if N==1 then 0 else 1 end
+end
+fun {NotGate Stream}
+    case Stream
+    of nil then nil
+    []H|T then {Not H}|{NotGate T}
+    [] _ then _
+    end
+end
+
+declare
+fun {OrGate S1 S2}
+    if S1.1==1 then 1|{OrGate S1.2 S2.2}
+    elseif S2.1==1 then 1|{OrGate S1.2 S2.2}
+    else 0|{OrGate S1.2 S2.2} end
+end
+
+declare
+fun {AndGate S1 S2}
+    if S1.1==1 then
+        if S2.1==1 then 1|{AndGate S1.2 S2.2} else 0|{AndGate S1.2 S2.2}end
+    else 0|{AndGate S1.2 S2.2} end
+end
+
+declare
+fun {Simulate G Inputs}
+    thread
+        case G
+        of gate(value:V X Y) then
+            if V=='or' then
+                {OrGate {Simulate X Inputs} {Simulate Y Inputs}}
+            else
+                {AndGate {Simulate X Inputs} {Simulate Y Inputs}}
+            end
+        [] gate(value:V X) then {NotGate {Simulate X Inputs}}
+        [] input(V) then Inputs.V
+        end
+    end
+end
+
+declare G S
+G = gate(value:'or'
+        gate(value:'and'
+            input(x)
+            input(y)
+        )
+        gate(value:'not' input(z))
+    )
+{Browse {Simulate G S}}
+S=input(x: 1|0|1|0|_ y:0|1|0|1|_ z:1|1|0|0|_)
