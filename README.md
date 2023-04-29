@@ -11,7 +11,8 @@ Ce TP ne contient pas de code OZ car il porte sur le lambda calcul. Je n'ai donc
 * https://lambdacalc.io/ qui est un site qui permet de mieux comprendre le lambda calcul
 * https://www.youtube.com/watch?v=swgV2fIDbtY qui est une vidéo expliquant les bases
 
-
+### TP7 - Objets
+Le TP 6 a été fait en 2 semaines donc je suppose que c'est en réalité le TP 6 et 7, tout se trouve donc dans TP6.oz pour ces 2 semaines là.
 
 
 Bon travail !
