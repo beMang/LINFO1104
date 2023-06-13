@@ -14,5 +14,7 @@ Ce TP ne contient pas de code OZ car il porte sur le lambda calcul. Je n'ai donc
 ### TP7 - Objets
 Le TP 6 a été fait en 2 semaines donc je suppose que c'est en réalité le TP 6 et 7, tout se trouve donc dans TP6.oz pour ces 2 semaines là.
 
+### TP12 - Erlang
+Ce TP porte sur erlang et se situe dans le dossier TP12 :)
 
 Bon travail !
